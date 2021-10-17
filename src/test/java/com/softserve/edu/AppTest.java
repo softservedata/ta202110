@@ -6,6 +6,7 @@ public class AppTest {
 
     @Test
     public void testApp() {
+		//Test comment
         // From Maven
         System.out.println("***surefire.java.version = " + System.getProperty("surefire.java.version"));
         // From OS
