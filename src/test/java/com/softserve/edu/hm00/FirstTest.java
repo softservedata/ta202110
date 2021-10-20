@@ -13,6 +13,6 @@ public class FirstTest {
         System.out.println("***System.getenv(\"DEFAULT_PASS\") = " + System.getenv("DEFAULT_PASS"));
         // From Eclipse/Idea
         System.out.println("***System.getenv().MY_IDE = " + System.getenv().get("MY_IDE"));
-
+        System.out.println("done");
     }
 }
