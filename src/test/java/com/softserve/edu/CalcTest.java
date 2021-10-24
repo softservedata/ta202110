@@ -32,69 +32,54 @@ public class CalcTest {
         System.out.println("\t@AfterEach tearDown()");
     }
 
-    @Test
-    void testAdd1() {
-        System.out.println("\t\t@Test testAdd1()");
-        /*-
-        //int i = 0;
-        double i = 0;
-        i = 10 / i;
-        System.out.println("\t\t\ti = " + i);
-        */
-        //fail("Not yet implemented");
-        //
-        Calc calc = new Calc();
-        double actual;
-        double expected;
-        //
-        expected = 10;
-        actual = calc.add(5, 5);
-        Assertions.assertEquals(expected, actual, 0.001);
-    }
+    public class CalcTest {
 
-    @Test
-    void testAdd2() {
-        System.out.println("\t\t@Test testAdd2()");
-        //
-        Calc calc = new Calc();
-        double actual;
-        double expected;
-        //
-        expected = 10;
-        actual = calc.add(6, 4);
-        Assertions.assertEquals(expected, actual, 0.001);
-    }
+        @Test
+        void testAdd2() {
+            System.out.println("\t\t@Test testAdd2()");
+            //
+            Calc calc = new Calc();
+            double actual;
+            double expected;
+            //
+            expected = 10;
+            actual = calc.add(6, 4);
+            Assertions.assertEquals(expected, actual, 0.001);
+        }
 
-    @Test
-    void testDiv1() {
-        System.out.println("\t\t@Test testDiv1()");
-        Calc calc = new Calc();
-        double actual;
-        double expected;
-        //
-        expected = 4;
-        actual = calc.div(20, 5);
-        Assertions.assertEquals(expected, actual, 0.001);
-    }
+        @Test
+        void testDiv1() {
+            System.out.println("\t\t@Test testDiv1()");
+            Calc calc = new Calc();
+            double actual;
+            double expected;
+            //
+            expected = 4;
+            actual = calc.div(20, 5);
+            Assertions.assertEquals(expected, actual, 0.001);
+        }
 
-    @Test
-    void testDiv2() {
-        System.out.println("\t\t@Test testDiv2()");
-        Calc calc = new Calc();
-        double actual;
-        double expected;
-        //
-        expected = 2.5;
-        actual = calc.div(20, 8);
-        Assertions.assertEquals(expected, actual, 0.001);
-    }
+        @Test
+        void testDiv2() {
+            System.out.println("\t\t@Test testDiv2()");
+            Calc calc = new Calc();
+            double actual;
+            double expected;
+            //
+            expected = 2.5;
+            actual = calc.div(20, 8);
+            Assertions.assertEquals(expected, actual, 0.001);
+        }
 
-    @Test
-    void testDiv3() {
-        int i = 0;
-        //double i = 0;
-        Assertions.assertThrows(ArithmeticException.class, () -> { int k = 0 / i; });
-        //i = 0 / i;
-        System.out.println("\t\t\ti = " + i);
+        @Test
+        void testDiv3() {
+            int i = 0;
+            //double i = 0;
+            Assertions.assertThrows(ArithmeticException.class, () -> {
+                int k = 0 / i;
+            });
+            //i = 0 / i;
+            System.out.println("\t\t\ti = " + i);
+        }
     }
 }
