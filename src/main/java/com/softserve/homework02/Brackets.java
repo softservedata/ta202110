@@ -7,9 +7,9 @@ public class Brackets {
         int bracketsCounter = 0;
 
         for (int i = 0; i < text.length(); i++) {
-            //if(bracketsCounter < 0){
-            //    return false;
-            //} else{
+            if(bracketsCounter < 0){
+                return false;
+            } else{
                 if (text.charAt(i) == ('(')) {
                     bracketsCounter++;
                 } else{
@@ -17,7 +17,7 @@ public class Brackets {
                         bracketsCounter--;
                     }
                 }
-               // }
+                }
         }
 
         if(bracketsCounter == 0){
