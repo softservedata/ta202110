@@ -137,7 +137,7 @@ public class SearchTest {
         return result;
     }
 
-    @Test
+    //@Test
     public void findByCss() {
         // Precondition
         WebElement usd = driver.findElement(By.cssSelector("button[name='USD']"));
@@ -172,8 +172,10 @@ public class SearchTest {
         // Check
         //WebElement price = driver.findElement(By.cssSelector("div.product-layout.product-grid div:has(> h4 > a[href*='id=43']) > p.price")); // id=43 Hardcode Invalid Solution
         WebElement price = getProductByName("MacBook").findElement(By.cssSelector("p.price"));
+        //WebElement price = getProductByName("MacBook").findElement(By.xpath(".//p[@class='price']"));
         //WebElement price = driver.findElement(By.cssSelector("#content > div:nth-child(8) > div:nth-child(2) > div > div:nth-child(2) > div.caption > h4 > a"));
         //
+        System.out.println("price.getText() = " + price.getText());
         Actions action = new Actions(driver);
         action.moveToElement(price).perform();
         //
@@ -183,7 +185,7 @@ public class SearchTest {
         presentationSleep(); // For Presentation ONLY
     }
 
-    //@Test
+    @Test
     public void findByXPath() {
         // Precondition
         // Choose Curency
@@ -203,8 +205,9 @@ public class SearchTest {
         driver.findElement(By.xpath("//button[@class='btn btn-default btn-lg']")).click();
         presentationSleep(); // For Presentation ONLY
         //
-        WebElement price = driver
-                .findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+        // $x("//a[text()='MacBook']/../..//p[contains(text(),'602')]")
+        WebElement price = driver.findElement(By
+                .xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
         // Scrolling by Action class
         Actions action = new Actions(driver);
         action.moveToElement(price).perform();
