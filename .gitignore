@@ -58,6 +58,7 @@ hs_err_pid*
 /shelf/
 /resources/static/
 /resources/front/
+/.vscode/
 workspace.xml
 *.iml
 *.ucls

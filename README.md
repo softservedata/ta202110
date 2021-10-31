@@ -7,6 +7,7 @@
 - main - tempate for new branches;
 - dev - selenium examples from trainings;
 - tst - unit test example;
+- branchYuriiTA - YuriiTA
 
 ### Instruction. Create new branch
 
