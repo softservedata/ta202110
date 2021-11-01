@@ -1,17 +1,16 @@
 package com.softserve.homework04;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import java.nio.file.FileStore;
 import java.util.concurrent.TimeUnit;
+
 
 public class SecondClass {
 
@@ -50,8 +49,8 @@ public class SecondClass {
 
 
        /*WebElement login = (WebElement) ((JavascriptExecutor)driver).executeScript("return document.getElementById('input-email')");
-        Assert.assertTrue(login.getAttribute("value").contains("hahaha@gmail.com"));*/
-
+        Assert.assertTrue(login.getAttribute("value").contains("hahaha@gmail.com")); // викидає exception
+        */
 
     }
 }
