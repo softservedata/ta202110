@@ -15,7 +15,6 @@ public class FirstClass {
     @Test
 
     public void searchWebElement(){
-        System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -27,10 +26,10 @@ public class FirstClass {
         driver.findElement(By.cssSelector("button[name='EUR']")).click();
         //
         driver.findElement(By.name("search")).sendKeys("iPhone");
-        driver.findElement(By.cssSelector("#search > input")).click(); //some problem with click
+        driver.findElement(By.cssSelector("#search button")).click(); //some problem with click
 
         WebElement price = driver
-                .findElement(By.xpath("//a[contains(text(),'iPhone XR')]"));
+                .findElement(By.xpath("//a[contains(text(),'iPhone XR')]/../.."));
         Assert.assertTrue(price.getText().contains("707.71€"));
         System.out.println("***contains: " + price.getText());
 
