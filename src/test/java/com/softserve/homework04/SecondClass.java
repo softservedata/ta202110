@@ -50,7 +50,9 @@ public class SecondClass {
 
        /*WebElement login = (WebElement) ((JavascriptExecutor)driver).executeScript("return document.getElementById('input-email')");
         Assert.assertTrue(login.getAttribute("value").contains("hahaha@gmail.com")); // викидає exception
-        */
+        System.out.println("***contains: " + login.getAttribute());*/
+
+
 
     }
 }

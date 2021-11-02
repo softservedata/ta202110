@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 //        driver.findElement(By.cssSelector("button[name='EUR']")).click();
 //        //
 //        driver.findElement(By.name("search")).sendKeys("iPhone");
-//        driver.findElement(By.cssSelector("#search button")).click(); //some problem with click
+//        driver.findElement(By.cssSelector("#search button")).click();
 //
 //        WebElement price = driver
 //                .findElement(By.xpath("//a[contains(text(),'iPhone XR')]/../.."));
