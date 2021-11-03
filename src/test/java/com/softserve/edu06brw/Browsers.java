@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -37,7 +36,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Browsers {
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
-    // public static ChromeDriverService service;
+    //public static ChromeDriverService service;
     public static DriverService service;
 
     private void takeScreenShot(WebDriver driver) throws IOException {
@@ -219,7 +218,7 @@ public class Browsers {
         // driver.quit();
     }
 
-    //@Test
+    // @Test
     public void testChrome1() throws Exception {
         //        System.setProperty("webdriver.chrome.driver",
         //                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -240,7 +239,7 @@ public class Browsers {
         driver.quit();
     }
 
-    //@Test
+    // @Test
     // chrome command line arguments
     // https://peter.sh/experiments/chromium-command-line-switches/
     public void testChrome2() throws Exception {
@@ -267,7 +266,7 @@ public class Browsers {
         //
         Thread.sleep(2000);
         takeScreenShot(driver);
-        driver.quit();
+        //driver.quit();
     }
 
     // @Test // ignore-certificate-errors Work by default!!!
@@ -371,7 +370,7 @@ public class Browsers {
     }
 
     // Chrome Without UI
-    //@Test
+    @Test
     public void testChrome5() throws Exception {
         // Firefox https://developer.mozilla.org/en-US/Firefox/Headless_mode
         // Chrome https://peter.sh/experiments/chromium-command-line-switches/
@@ -393,7 +392,7 @@ public class Browsers {
         element.sendKeys("Cheese!");
         element.submit();
         Thread.sleep(1000);
-        System.out.println("\telement.sendKeys Cheese! DONE");
+        //System.out.println("\telement.sendKeys Cheese! DONE");
         System.out.println("\tPage title is: " + driver.getTitle());
         Thread.sleep(2000);
         takeScreenShot(driver);
@@ -454,7 +453,8 @@ public class Browsers {
     //@Test
     public void testPhantomjs() throws Exception {
         //        System.setProperty("phantomjs.binary.path", "./lib/phantomjs.exe");
-        ////WebDriverManager.phantomjs().setup();
+        WebDriverManager.phantomjs().setup();
+        //PhantomJsDriverManager.getInstance().setup();
         // WebDriver driver = new ChromeDriver();
         WebDriver driver = new PhantomJSDriver();
         // WebDriver driver = new HtmlUnitDriver(true);
@@ -468,6 +468,7 @@ public class Browsers {
         //
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
+        //element.submit();
         System.out.println("\telement.sendKeys Cheese! DONE");
         System.out.println("\tPage title is: " + driver.getTitle());
         element.submit();
@@ -502,7 +503,7 @@ public class Browsers {
         service = new ChromeDriverService.Builder()
                 // .usingDriverExecutable(new File("./lib/chromedriver.exe"))
                 .usingDriverExecutable(new File(
-                        System.getenv("HOMEPATH") + "\\.cache\\selenium\\chromedriver\\win32\\91.0.4472.101\\chromedriver.exe"))
+                        System.getenv("HOMEPATH") + "\\.cache\\selenium\\chromedriver\\win32\\95.0.4638.54\\chromedriver.exe"))
                 //                .usingDriverExecutable(
                 //                        new File(this.getClass().getResource("/chromedriver.exe").getPath()))
                 // .usingAnyFreePort()
