@@ -43,6 +43,7 @@ public class FifthImExplicitWait {
         driver.findElement(By.xpath("//*[@id='content']/..//div[2]/button[2]/i")).click();
 
 
+        //explicit wait
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[1]")));
 
