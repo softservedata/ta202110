@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu;
 
 import java.time.Duration;
 import java.util.List;
