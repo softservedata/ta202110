@@ -9,7 +9,7 @@ import com.softserve.edu.opencart.pages.HomePage;
 
 public class LoginTest extends TestRunner {
 
-    @DataProvider
+    @DataProvider(parallel = true)
     public Object[][] dataSuccessful() {
         return new Object[][] {
             { "xdknxusqvjeovowpfk@awdrt.com", "awdrt123", "my" },
