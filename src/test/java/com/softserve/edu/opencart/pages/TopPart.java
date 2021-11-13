@@ -5,6 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.homework08.DropdownComponent;
+
 public abstract class TopPart {
 
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -33,6 +35,7 @@ public abstract class TopPart {
     //
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
+    private DropdownComponent dropdownComponent;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
@@ -229,6 +232,34 @@ public abstract class TopPart {
     private void closeDropdownLogged() {
         clickSearchTopField();
         dropdownLogged = null;
+    }
+    
+    
+    // dropdownComponent
+    public DropdownComponent getDropdownComponent() {
+        if (dropdownComponent == null) {
+            // TODO Develop Custom Exception 
+            throw new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return dropdownComponent;
+    }
+
+    public void selectCurrencyEUR() {
+    	clickCurrency();
+    	dropdownComponent.clickCurrencyEUR();
+
+    }
+    
+    public void selectCurrencyGBP() {
+    	clickCurrency();
+    	dropdownComponent.clickCurrencyGBP();
+
+    }
+    
+    public void selectCurrencyUSD() {
+    	clickCurrency();
+    	dropdownComponent.clickCurrencyUSD();
+
     }
 
     // menu // TODO
