@@ -48,7 +48,7 @@ public class LoginTest {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        System.out.println("after");
+        System.out.println("print after");
         presentationSleep();
         driver.quit();
     }
