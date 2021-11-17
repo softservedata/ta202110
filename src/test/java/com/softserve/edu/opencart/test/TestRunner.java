@@ -70,8 +70,6 @@ public abstract class TestRunner {
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         //driver.manage().window().maximize();
-        // TODO
-        DriverWrapper.setDriver(Browsers.CHROME_TEMPORARY);
     }
 
     @AfterClass(alwaysRun = true)
@@ -79,11 +77,14 @@ public abstract class TestRunner {
         presentationSleep(); // For Presentation ONLY
         // driver.close();
         //driver.quit();
+        DriverWrapper.quit();
     }
 
     @BeforeMethod
     public void beforeMethod() {
         //driver.get(BASE_URL);
+        // TODO
+        //DriverWrapper.setDriver(Browsers.CHROME_TEMPORARY);
         presentationSleep(); // For Presentation ONLY
     }
 
