@@ -1,19 +1,17 @@
 package com.softserve.homework04;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Test;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest {
+public class LoginTest{
 
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
@@ -71,12 +69,6 @@ public class LoginTest {
 
     @Test
     public void Login(){
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        //
-        driver.get("http://taqc-opencart.epizy.com/");
 
         presentationSleep();
 
