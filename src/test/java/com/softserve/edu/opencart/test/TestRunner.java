@@ -1,20 +1,5 @@
 package com.softserve.edu.opencart.test;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.Date;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -23,15 +8,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.softserve.edu.opencart.pages.HomePage;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.softserve.edu.opencart.tools.browser.Browsers;
+import com.softserve.edu.opencart.tools.browser.DriverWrapper;
 
 public abstract class TestRunner {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
-    private WebDriver driver;
+    //private WebDriver driver;
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -46,6 +31,7 @@ public abstract class TestRunner {
         }
     }
     
+    /*-
     private void takeScreenShot(String testname) {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -69,32 +55,36 @@ public abstract class TestRunner {
             e.printStackTrace();
         }
     }
+    */
 
     @BeforeSuite
     public void beforeSuite() {
         // System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
         // WebDriverManager.firefoxdriver().setup();
     }
 
     @BeforeClass
     public void beforeClass() {
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
-        driver.manage().window().maximize();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+        //driver.manage().window().maximize();
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         presentationSleep(); // For Presentation ONLY
         // driver.close();
-        driver.quit();
+        //driver.quit();
+        DriverWrapper.quit();
     }
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(BASE_URL);
+        //driver.get(BASE_URL);
+        // TODO
+        //DriverWrapper.setDriver(Browsers.CHROME_TEMPORARY);
         presentationSleep(); // For Presentation ONLY
     }
 
@@ -107,8 +97,9 @@ public abstract class TestRunner {
             // Take Screenshot, Save sourceCode, Save to log, Prepare report, Return to previous state, logout, etc.
             // driver.manage().deleteAllCookies();
             // clear cache; delete cookie; delete session;
-            takeScreenShot(testName);
-            takePageSource(testName);
+            //takeScreenShot(testName);
+            //takePageSource(testName);
+            DriverWrapper.deleteCookies();
             // driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
             // session;
         }
@@ -119,7 +110,9 @@ public abstract class TestRunner {
     }
 
     protected HomePage loadApplication() {
-        return new HomePage(driver);
+        DriverWrapper.getUrl(BASE_URL);
+        //return new HomePage(driver);
+        return new HomePage(DriverWrapper.getDriver());
     }
 
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.homework08.CurrencyDropdown;
+import com.softserve.edu.opencart.data.Currencies;
 
 public abstract class TopPart {
 
@@ -33,6 +34,7 @@ public abstract class TopPart {
     //
     // List<MenuComponent> menu;
     //
+    private DropdownComponent dropdownComponent;
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
     private CurrencyDropdown dropdownCurrency;
@@ -161,6 +163,39 @@ public abstract class TopPart {
         getCartButton().click();
     }
 
+    // dropdownComponent
+    protected DropdownComponent getDropdownComponent() {
+        //LeaveUtils.castExceptionByCondition(dropdownOptions == null, OPTION_NULL_MESSAGE);
+        if (dropdownComponent == null) {
+            // TODO Develop Custom Exception 
+            throw new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return dropdownComponent;
+    }
+
+    private DropdownComponent createDropdownComponent(By searchLocator) {
+        dropdownComponent = new DropdownComponent(driver, searchLocator);
+        return getDropdownComponent();
+    }
+
+    private void clickDropdownComponentByPartialName(String optionName) {
+        //LeaveUtils.castExceptionByCondition(!getDropdownOptions().isExistDropdownOptionByPartialName(optionName),
+        //        String.format(OPTION_NOT_FOUND_MESSAGE, optionName, dropdownOptions.getListOptionsText().toString()));
+        if (!getDropdownComponent().isExistDropdownOptionByPartialName(optionName)) {
+            // TODO Develop Custom Exception 
+            throw new RuntimeException(String.format(OPTION_NOT_FOUND_MESSAGE, optionName,
+                    getDropdownComponent().getListOptionsText().toString()));
+        }
+        getDropdownComponent().clickDropdownOptionByPartialName(optionName);
+        dropdownComponent = null;
+        //closeDropdownComponent();
+    }
+
+    private void closeDropdownComponent() {
+        clickSearchTopField();
+        dropdownComponent = null;
+    }
+    
     // dropdownGuest
     protected GuestDropdown getDropdownGuest() {
         if (dropdownGuest == null) {
@@ -233,39 +268,26 @@ public abstract class TopPart {
         clickSearchTopField();
         dropdownLogged = null;
     }
-    
- // dropdownCurrency
-    protected CurrencyDropdown getDropdownCurrency() {
-        if (dropdownCurrency == null) {
-            // TODO Develop Custom Exception 
-            throw new RuntimeException(OPTION_NULL_MESSAGE);
-        }
-        return dropdownCurrency;
-    }
-
-    private void selectCurrencyEuro() {
-    	clickCurrency();
-    	dropdownCurrency.selectEuro();
-
-    }
-    
-    private void selectCurrencyPound() {
-    	clickCurrency();
-    	dropdownCurrency.selectPoundSterling();
-
-    }
-    
-    private void selectCurrencyDollar() {
-    	clickCurrency();
-    	dropdownCurrency.selectUSDollar();
-
-    }
-
 
     // menu // TODO
 
     // Functional
 
+    // currency
+    private void openCurrencyDropdownComponent() {
+        //clickSearchTopField();
+        closeDropdownComponent();
+        clickCurrency();
+        createDropdownComponent(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
+    }
+    
+    //protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
+    protected void clickCurrencyByPartialName(Currencies optionName) {
+        openCurrencyDropdownComponent();
+        //clickDropdownComponentByPartialName(currencyName);
+        clickDropdownComponentByPartialName(optionName.toString());
+    }
+    
     // myAccount
     protected void openMyAccountDropdown() {
         clickSearchTopField();

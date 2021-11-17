@@ -38,6 +38,7 @@ interface IRegion {
 
 interface IPassword {
     ISubscribe setPassword(String password);
+    //ISubscribe setToken(String token);
 }
 
 interface ISubscribe {
