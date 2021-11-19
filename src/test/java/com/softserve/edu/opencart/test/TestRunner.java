@@ -113,7 +113,8 @@ public abstract class TestRunner {
     protected HomePage loadApplication() {
         DriverWrapper.getUrl(BASE_URL);
         //return new HomePage(driver);
-        return new HomePage(DriverWrapper.getDriver());
+        //return new HomePage(DriverWrapper.getDriver());
+        return new HomePage();
     }
 
 }

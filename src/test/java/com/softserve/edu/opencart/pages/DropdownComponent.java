@@ -4,26 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class DropdownComponent {
 
     protected final String OPTIONNAME_NOT_FOUND = "OptionName not Found.";
     //
-    protected WebDriver driver;
+    //protected WebDriver driver;
+    protected Search search;
     //
     private List<WebElement> listOptions;
 
-    public DropdownComponent(WebDriver driver, By searchLocator) {
-        this.driver = driver;
+    //public DropdownComponent(WebDriver driver, By searchLocator) {
+    public DropdownComponent(By searchLocator) {
+        //this.driver = driver;
+        search = SearchStrategy.getSearch();
         initElements(searchLocator);
     }
 
     private void initElements(By searchLocator) {
         // init elements
-        listOptions = driver.findElements(searchLocator);
-        // listOptions = search.getWebElements(searchLocator); // for Strategy
+        //listOptions = driver.findElements(searchLocator);
+        //
+        listOptions = search.searchWebElements(searchLocator); // for Strategy
     }
 
     // Page Object

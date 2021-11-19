@@ -1,7 +1,6 @@
 package com.softserve.edu.opencart.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Currencies;
@@ -15,15 +14,20 @@ public class HomePage extends TopPart {
     //
     private ProductsContainer productsContainer;
 
-    public HomePage(WebDriver driver) {
-        super(driver);
+    //public HomePage(WebDriver driver) {
+    public HomePage() {
+        //super(driver);
+        super();
         initElements();
-        productsContainer = new ProductsContainer(driver);
+        //productsContainer = new ProductsContainer(driver);
+        productsContainer = new ProductsContainer();
     }
 
     private void initElements() {
         // init elements
-        slideshow0 = driver.findElement(By.id("slideshow0"));
+        //slideshow0 = driver.findElement(By.id("slideshow0"));
+        //
+        slideshow0 = search.id("slideshow0");
     }
 
     // Page Object
@@ -62,7 +66,8 @@ public class HomePage extends TopPart {
         //logger.debug("start chooseCurrency() with currency = " + currency.toString());
         clickCurrencyByPartialName(currency);
         //logger.debug("end chooseCurrency() with currency = " + currency.toString());
-        return new HomePage(driver);
+        //return new HomePage(driver);
+        return new HomePage();
     }
 
     public HomePage scrollToProduct(Product product) {
@@ -70,7 +75,8 @@ public class HomePage extends TopPart {
                 .getProductComponentByName(product.getName())
                 .getName();
         scrollToElement(webElement);
-        return new HomePage(driver);
+        //return new HomePage(driver);
+        return new HomePage();
     }
     
 }

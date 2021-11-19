@@ -1,12 +1,15 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
+
 public class LoggedDropdown {
 
-    private WebDriver driver;
+    //private WebDriver driver;
+    protected Search search;
     //
     private WebElement myAccount;
     private WebElement orderHistory;
@@ -14,17 +17,25 @@ public class LoggedDropdown {
     private WebElement downloads;
     private WebElement logout;
 
-    protected LoggedDropdown(WebDriver driver) {
-        this.driver = driver;
+    //protected LoggedDropdown(WebDriver driver) {
+    protected LoggedDropdown() {
+        //this.driver = driver;
+        search = SearchStrategy.getSearch();
         initElements();
     }
 
     private void initElements() {
-        myAccount = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/account')]"));
-        orderHistory = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/order')]"));
-        transactions = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/transaction')]"));
-        downloads = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/download')]"));
-        logout = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/logout')]"));
+//        myAccount = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/account')]"));
+//        orderHistory = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/order')]"));
+//        transactions = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/transaction')]"));
+//        downloads = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/download')]"));
+//        logout = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/logout')]"));
+        //
+        myAccount = search.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/account')]");
+        orderHistory = search.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/order')]");
+        transactions = search.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/transaction')]");
+        downloads = search.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/download')]");
+        logout = search.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/logout')]");
     }
 
     // Page Object

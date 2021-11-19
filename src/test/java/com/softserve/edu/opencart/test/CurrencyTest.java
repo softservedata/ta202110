@@ -9,7 +9,7 @@ import com.softserve.edu.opencart.pages.HomePage;
 
 public class CurrencyTest extends TestRunner {
 
-    @DataProvider//(parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] searchCurrencies() {
         return new Object[][] { 
             { Currencies.EURO },

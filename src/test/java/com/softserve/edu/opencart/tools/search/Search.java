@@ -34,7 +34,7 @@ public abstract class Search {
         }
     }
 
-    private List<WebElement> searchWebElements(By by) {
+    public List<WebElement> searchWebElements(By by) {
         try {
             return getWebElements(by);
         } catch (Exception e) {

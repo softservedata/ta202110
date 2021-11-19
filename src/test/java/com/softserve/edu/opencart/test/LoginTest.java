@@ -25,7 +25,7 @@ public class LoginTest extends TestRunner {
     public Object[][] dataSuccessful() {
         return new Object[][] {
             { UserRepository.get().getHahaha() },
-            { UserRepository.get().getAwdrt() },
+            //{ UserRepository.get().getAwdrt() },
         };
     }
     

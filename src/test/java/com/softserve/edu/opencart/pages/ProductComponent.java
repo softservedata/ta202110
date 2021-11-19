@@ -1,11 +1,14 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class ProductComponent {
 
     private WebElement productLayout;
+    protected Search search;
     //
     private WebElement name;
     private WebElement partialDescription;
@@ -16,17 +19,25 @@ public class ProductComponent {
 
     public ProductComponent(WebElement productLayout) {
         this.productLayout = productLayout;
+        search = SearchStrategy.getSearch();
         initElements();
     }
 
     private void initElements() {
         // init elements
-        name = productLayout.findElement(By.cssSelector("h4 a"));
-        partialDescription = productLayout.findElement(By.cssSelector("h4 + p"));
-        price = productLayout.findElement(By.cssSelector(".price"));
-        addToCartButton = productLayout.findElement(By.cssSelector(".fa.fa-shopping-cart"));
-        addToWishButton = productLayout.findElement(By.cssSelector(".fa.fa-heart"));
-        addToCompareButton = productLayout.findElement(By.cssSelector(".fa.fa-exchange"));
+//        name = productLayout.findElement(By.cssSelector("h4 a"));
+//        partialDescription = productLayout.findElement(By.cssSelector("h4 + p"));
+//        price = productLayout.findElement(By.cssSelector(".price"));
+//        addToCartButton = productLayout.findElement(By.cssSelector(".fa.fa-shopping-cart"));
+//        addToWishButton = productLayout.findElement(By.cssSelector(".fa.fa-heart"));
+//        addToCompareButton = productLayout.findElement(By.cssSelector(".fa.fa-exchange"));
+        //
+        name = search.cssSelector("h4 a", productLayout);
+        partialDescription = search.cssSelector("h4 + p", productLayout);
+        price = search.cssSelector(".price", productLayout);
+        addToCartButton = search.cssSelector(".fa.fa-shopping-cart", productLayout);
+        addToWishButton = search.cssSelector(".fa.fa-heart", productLayout);
+        addToCompareButton = search.cssSelector(".fa.fa-exchange", productLayout);
     }
 
     // Page Object

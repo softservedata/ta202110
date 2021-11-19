@@ -1,21 +1,23 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AccountLogoutPage extends AccountSidebarGuestPart {
 
     private WebElement continueButton;
 
-    public AccountLogoutPage(WebDriver driver) {
-        super(driver);
+    //public AccountLogoutPage(WebDriver driver) {
+    public AccountLogoutPage() {
+        //super(driver);
+        super();
         initElements();
         //ApplicationStatus.get().setLogged(false);
     }
 
     private void initElements() {
-        continueButton = driver.findElement(By.cssSelector("a.btn.btn-primary[href*='common/home']"));
+        //continueButton = driver.findElement(By.cssSelector("a.btn.btn-primary[href*='common/home']"));
+        //
+        continueButton = search.cssSelector("a.btn.btn-primary[href*='common/home']");
     }
 
     // Page Object
@@ -39,7 +41,8 @@ public class AccountLogoutPage extends AccountSidebarGuestPart {
 
     public HomePage gotoContinue() {
         clickContinueButton();
-        return new HomePage(driver);
+        //return new HomePage(driver);
+        return new HomePage();
     }
 
 }

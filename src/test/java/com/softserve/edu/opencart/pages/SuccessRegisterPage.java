@@ -1,22 +1,24 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class SuccessRegisterPage extends AccountSidebarLoggedPart {
 
 	private WebElement continueButton;
 
-	public SuccessRegisterPage(WebDriver driver) {
-		super(driver);
+	//public SuccessRegisterPage(WebDriver driver) {
+	public SuccessRegisterPage() {
+		//super(driver);
+	    super();
 		initElements();
 	}
 
 	private void initElements() {
-		continueButton = driver.findElement(By.cssSelector("a.btn.btn-primary"));	
+		//continueButton = driver.findElement(By.cssSelector("a.btn.btn-primary"));
+	    //
+	    continueButton = search.cssSelector("a.btn.btn-primary");
 	}
-	
+
 	// Page Object
 	
 	// continueButton
@@ -37,7 +39,8 @@ public class SuccessRegisterPage extends AccountSidebarLoggedPart {
 	// Business Logic
 	public MyAccountPage continueMyAccountPage() {
 		clickContinueButton();
-		return new MyAccountPage(driver);
+		//return new MyAccountPage(driver);
+		return new MyAccountPage();
 	}
 	
 }

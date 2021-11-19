@@ -10,12 +10,12 @@ import com.softserve.edu.opencart.pages.HomePage;
 
 public class ProductSearchTest extends TestRunner {
 
-    @DataProvider//(parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] searchProducts() {
         return new Object[][] { 
             //{ SearchProductRepository.getMacDollar() },
             { SearchProductRepository.getMacEuro() },
-            //{ SearchProductRepository.getMacPoundSterling() },
+            { SearchProductRepository.getMacPoundSterling() },
         };
     }
 

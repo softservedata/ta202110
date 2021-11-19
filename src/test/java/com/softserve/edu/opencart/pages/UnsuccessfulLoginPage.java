@@ -1,7 +1,5 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class UnsuccessfulLoginPage extends LoginPage {
@@ -11,13 +9,17 @@ public class UnsuccessfulLoginPage extends LoginPage {
     //
     private WebElement alertWarning;
 
-    public UnsuccessfulLoginPage(WebDriver driver) {
-        super(driver);
+    //public UnsuccessfulLoginPage(WebDriver driver) {
+    public UnsuccessfulLoginPage() {
+        //super(driver);
+        super();
         initElements();
     }
 
     private void initElements() {
-        alertWarning = driver.findElement(By.cssSelector(".alert.alert-danger"));
+        //alertWarning = driver.findElement(By.cssSelector(".alert.alert-danger"));
+        //
+        alertWarning = search.cssSelector(".alert.alert-danger");
     }
 
     // Page Object

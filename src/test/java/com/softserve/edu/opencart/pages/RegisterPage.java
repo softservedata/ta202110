@@ -1,7 +1,5 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -28,30 +26,51 @@ public class RegisterPage extends AccountSidebarGuestPart {
     private WebElement privacyPolicy;
     private WebElement continueButton;
 
-    public RegisterPage(WebDriver driver) {
-        super(driver);
+    //public RegisterPage(WebDriver driver) {
+    public RegisterPage() {
+        //super(driver);
+        super();
         initElements();
     }
 
     private void initElements() {
-        firstname = driver.findElement(By.id("input-firstname"));
-        lastname = driver.findElement(By.id("input-lastname"));
-        email = driver.findElement(By.id("input-email"));
-        telephone = driver.findElement(By.id("input-telephone"));
-        fax = driver.findElement(By.id("input-fax"));
-        company = driver.findElement(By.id("input-company"));
-        address1 = driver.findElement(By.id("input-address-1"));
-        address2 = driver.findElement(By.id("input-address-2"));
-        city = driver.findElement(By.id("input-city"));
-        postcode = driver.findElement(By.id("input-postcode"));
-        country = new Select(driver.findElement(By.id("input-country")));
-        region = new Select(driver.findElement(By.id("input-zone")));
-        password = driver.findElement(By.id("input-password"));
-        confirmPassword = driver.findElement(By.id("input-confirm"));
-        subscribeYes = driver.findElement(By.cssSelector("label.radio-inline > input[value='1']"));
-        subscribeNo = driver.findElement(By.cssSelector("label.radio-inline > input[value='0']"));
-        privacyPolicy = driver.findElement(By.name("agree"));
-        continueButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+//        firstname = driver.findElement(By.id("input-firstname"));
+//        lastname = driver.findElement(By.id("input-lastname"));
+//        email = driver.findElement(By.id("input-email"));
+//        telephone = driver.findElement(By.id("input-telephone"));
+//        fax = driver.findElement(By.id("input-fax"));
+//        company = driver.findElement(By.id("input-company"));
+//        address1 = driver.findElement(By.id("input-address-1"));
+//        address2 = driver.findElement(By.id("input-address-2"));
+//        city = driver.findElement(By.id("input-city"));
+//        postcode = driver.findElement(By.id("input-postcode"));
+//        country = new Select(driver.findElement(By.id("input-country")));
+//        region = new Select(driver.findElement(By.id("input-zone")));
+//        password = driver.findElement(By.id("input-password"));
+//        confirmPassword = driver.findElement(By.id("input-confirm"));
+//        subscribeYes = driver.findElement(By.cssSelector("label.radio-inline > input[value='1']"));
+//        subscribeNo = driver.findElement(By.cssSelector("label.radio-inline > input[value='0']"));
+//        privacyPolicy = driver.findElement(By.name("agree"));
+//        continueButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        //
+        firstname = search.id("input-firstname");
+        lastname = search.id("input-lastname");
+        email = search.id("input-email");
+        telephone = search.id("input-telephone");
+        fax = search.id("input-fax");
+        company = search.id("input-company");
+        address1 = search.id("input-address-1");
+        address2 = search.id("input-address-2");
+        city = search.id("input-city");
+        postcode = search.id("input-postcode");
+        country = new Select(search.id("input-country"));
+        region = new Select(search.id("input-zone"));
+        password = search.id("input-password");
+        confirmPassword = search.id("input-confirm");
+        subscribeYes = search.cssSelector("label.radio-inline > input[value='1']");
+        subscribeNo = search.cssSelector("label.radio-inline > input[value='0']");
+        privacyPolicy = search.name("agree");
+        continueButton = search.cssSelector("input.btn.btn-primary");
     }
     
     // Page Object
@@ -469,7 +488,8 @@ public class RegisterPage extends AccountSidebarGuestPart {
     // Business Logic
     public SuccessRegisterPage successfullRegisterUser(IUser newValidUser) {
         fillRegistrationForm(newValidUser);
-        return new SuccessRegisterPage(driver);
+        //return new SuccessRegisterPage(driver);
+        return new SuccessRegisterPage();
     }
 
     //public RegisterPage unsuccessfullRegisterUser(IUser invalidUser) {
