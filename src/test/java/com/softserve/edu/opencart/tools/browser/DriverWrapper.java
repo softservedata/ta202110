@@ -14,13 +14,18 @@ public final class DriverWrapper {
     }
     
     public static WebDriver setDriver(Browsers browser) {
+        //System.out.println("setDriver()  browser = " + browser.name());
         //driver = browser.runBrowser();
         drivers.put(Thread.currentThread().getId(), browser.runBrowser());
         return drivers.get(Thread.currentThread().getId());
     }
     
     public static WebDriver getDriver() {
+        //System.out.println("****ID Thread = " + Thread.currentThread().getId());
         WebDriver driver = drivers.get(Thread.currentThread().getId());
+        //if (driver == null) {
+        //    System.out.println("****driver == null ****ID Thread = " + Thread.currentThread().getId());
+        //}
         //
         if (driver == null) {
             driver = setDriver(Browsers.DEFAULT_TEMPORARY);
