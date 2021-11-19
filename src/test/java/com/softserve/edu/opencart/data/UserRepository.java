@@ -84,12 +84,24 @@ public final class UserRepository {
                 .build();
     }
     
-    
-    /*-
     public IUser getInvalidUser() {
-        
+    	String time = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+        String invalidEmail = "invalid" + time + "@test.com";
+    	return User.get()
+                .setFirstname("")
+                .setLastname("")
+                .setEmail(invalidEmail)
+                .setTelephone("")
+                .setAddress1("")
+                .setCity("")
+                .setPostcode("")
+                .setCountry("")
+                .setRegion("")
+                .setPassword("pass123")
+                .setSubscribe(true)
+                .setFax("")
+                .build();
     }
-    */
     
     /*-
     public List<IUser> fromCsv(String filename) {
