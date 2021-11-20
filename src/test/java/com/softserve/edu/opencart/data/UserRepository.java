@@ -85,11 +85,26 @@ public final class UserRepository {
     }
     
     
-    /*-
+ 
     public IUser getInvalidUser() {
-        
+        String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+        String invalidEmail = "invalidEmail" + currentTime + "@gmail.com";
+        return User.get()
+                .setFirstname("")
+                .setLastname("")
+                .setEmail(invalidEmail)
+                .setTelephone("")
+                .setAddress1("")
+                .setCity("")
+                .setPostcode("")
+                .setCountry("")
+                .setRegion("")
+                .setPassword("invalid")
+                .setSubscribe(true)
+                .build();
+       
     }
-    */
+   
     
     /*-
     public List<IUser> fromCsv(String filename) {
