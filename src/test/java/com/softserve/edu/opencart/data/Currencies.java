@@ -1,7 +1,7 @@
 package com.softserve.edu.opencart.data;
 
 public enum Currencies {
-    DEFAULT_CURRENCY("US Dollar"),
+	DEFAULT_CURRENCY("US Dollar"),
 	EURO("Euro"),
 	POUND_STERLING("Pound Sterling"),
 	US_DOLLAR("US Dollar");

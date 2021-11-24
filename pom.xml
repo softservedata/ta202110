@@ -21,6 +21,8 @@
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<aspectj.version>1.9.7</aspectj.version>
+		<!-- - - - - - Password - - - - - -->
+		<application.password>null123</application.password>
 	</properties>
 
 	<dependencies>
@@ -43,6 +45,13 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
 			<version>5.8.1</version>
 			<scope>test</scope>
 		</dependency>
@@ -195,15 +204,16 @@
 <!-- 						<include>**/*.java</include> -->
 <!-- 					</includes> -->
 					<systemPropertyVariables>
-						<surefire.java.version>
-							${java.version}
-						</surefire.java.version>
+						<surefire.application.password>
+							${application.password}
+						</surefire.application.password>
 					</systemPropertyVariables>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 					<suiteXmlFiles>
 						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
 						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+<!-- 						<suiteXmlFile>testng.xml</suiteXmlFile> -->
+						<suiteXmlFile>testng3par.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

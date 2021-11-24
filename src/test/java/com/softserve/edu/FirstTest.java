@@ -54,12 +54,16 @@ public class FirstTest {
 
     @Test
     public void f1() {
-        System.out.println("\t\t\t\t@Test f1() FirstTest");
+        System.out.println("\t\t\t\t@Test f1() FirstTest, ThreadId = " + Thread.currentThread().getId());
     }
 
     @Test
     public void f2() {
-        System.out.println("\t\t\t\t@Test f2() FirstTest");
+        System.out.println("\t\t\t\t@Test f2() FirstTest, ThreadId = " + Thread.currentThread().getId());
     }
 
+    @Test
+    public void f3() {
+        System.out.println("\t\t\t\t@Test f3() FirstTest, ThreadId = " + Thread.currentThread().getId());
+    }
 }

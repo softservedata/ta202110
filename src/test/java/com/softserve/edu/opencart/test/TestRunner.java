@@ -1,5 +1,8 @@
 package com.softserve.edu.opencart.test;
 
+import java.util.Map;
+
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -8,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.softserve.edu.opencart.pages.HomePage;
+import com.softserve.edu.opencart.tools.browser.Browsers;
 import com.softserve.edu.opencart.tools.browser.DriverWrapper;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
@@ -16,6 +20,7 @@ public abstract class TestRunner {
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
+    private Browsers browser = Browsers.CHROME_TEMPORARY;
     //private WebDriver driver;
 
     protected void presentationSleep() {
@@ -65,11 +70,25 @@ public abstract class TestRunner {
     }
 
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass(ITestContext context) {
         //driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         //driver.manage().window().maximize();
+        //
+        if (context != null) {
+            for (Map.Entry<String, String> entry : context.getCurrentXmlTest().getAllParameters().entrySet()) {
+                System.out.println("\t\t*** parameter: key=" + entry.getKey() + " value=" + entry.getValue());
+                if (entry.getKey().contains("browser")) {
+                    if (entry.getValue().contains("chrome")) {
+                        browser = Browsers.CHROME_TEMPORARY;
+                    } else if (entry.getValue().contains("firefox")) {
+                        browser = Browsers.FIREFOX_TEMPORARY;
+                    }
+                }
+            }
+        }
+        //DriverWrapper.setDriver(browser);
     }
 
     @AfterClass(alwaysRun = true)
@@ -82,6 +101,7 @@ public abstract class TestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
+        DriverWrapper.setDriver(browser);
         SearchStrategy.setImplicitStrategy();
         //driver.get(BASE_URL);
         // TODO

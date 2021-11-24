@@ -15,5 +15,4 @@ public class TestNGTest2 {
       System.out.println("Method is not ready yet");
     }
 
-
 }
