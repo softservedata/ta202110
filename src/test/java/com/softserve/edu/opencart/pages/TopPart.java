@@ -3,11 +3,15 @@ package com.softserve.edu.opencart.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.tools.browser.DriverWrapper;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
+
+import io.qameta.allure.Step;
 
 public abstract class TopPart {
 
@@ -21,7 +25,7 @@ public abstract class TopPart {
     protected final String LIST_CURRENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
     protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
     //
-    //protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     //protected WebDriver driver;
     protected Search search;
     //
@@ -331,8 +335,10 @@ public abstract class TopPart {
         return new HomePage();
     }
 
+    @Step("STEP GOTO LOGIN PAGE")
     // dropdownGuest
     public LoginPage gotoLoginPage() {
+        logger.debug("TopPart gotoLoginPage() start");
         openMyAccountDropdown();
         createDropdownGuest();
         clickDropdownGuestLogin();

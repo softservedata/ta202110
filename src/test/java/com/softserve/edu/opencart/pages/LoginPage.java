@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.IUser;
 
+import io.qameta.allure.Step;
+
 public class LoginPage extends AccountSidebarGuestPart {
 
     private WebElement email;
@@ -109,8 +111,10 @@ public class LoginPage extends AccountSidebarGuestPart {
 
     // Business Logic
 
+    @Step("STEP SUCCESSFUL LOGIN")
     public MyAccountPage successfulLogin(IUser validUser) {
     //public MyAccountPage successfulLogin(String email, String password) {
+        logger.debug("LoginPage successfulLogin() start, validUser = " + validUser);
         fillLogin(validUser);
         //fillLogin(email, password);
         //return new MyAccountPage(driver);

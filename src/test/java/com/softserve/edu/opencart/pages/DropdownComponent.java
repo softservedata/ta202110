@@ -5,12 +5,16 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.softserve.edu.Applog;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class DropdownComponent {
 
+    public static final Logger logger = LoggerFactory.getLogger(DropdownComponent.class); // org.slf4j.LoggerFactory
     protected final String OPTIONNAME_NOT_FOUND = "OptionName not Found.";
     //
     //protected WebDriver driver;

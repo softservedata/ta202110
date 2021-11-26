@@ -9,6 +9,20 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.EditAccountPage;
 import com.softserve.edu.opencart.pages.HomePage;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Link;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
+
+@Owner(value = "OWNER First name")
+@Epic("EPIC AllureTest")
+@Feature("FEATURE SearchAllureTes")
 public class LoginTest extends TestRunner {
 
     /*-
@@ -29,8 +43,16 @@ public class LoginTest extends TestRunner {
         };
     }
     
+    @Description("TEST DESCRIPTION: class SearchAllureTest; findByXPath().")
+    @Severity(SeverityLevel.BLOCKER)
+    @Story("STORY SearchAllureTest")
+    @Issue("SSITAGT-1")
+    @Link(name = "LINK goto site", url = "http://taqc-opencart.epizy.com/?i=1")
+    @TmsLink(value = "TL-678")
+    //
     @Test(dataProvider = "dataSuccessful")
     public void checkSuccessful(IUser user) {
+        logger.info("Test checkSuccessful(), user = " + user + " started");
         //
         // Steps
         EditAccountPage editAccountPage = loadApplication()

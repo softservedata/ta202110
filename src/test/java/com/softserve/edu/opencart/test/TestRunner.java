@@ -1,7 +1,16 @@
 package com.softserve.edu.opencart.test;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -15,6 +24,8 @@ import com.softserve.edu.opencart.tools.browser.Browsers;
 import com.softserve.edu.opencart.tools.browser.DriverWrapper;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
+import io.qameta.allure.Attachment;
+
 public abstract class TestRunner {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
@@ -22,6 +33,7 @@ public abstract class TestRunner {
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     private Browsers browser = Browsers.CHROME_TEMPORARY;
     //private WebDriver driver;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -62,6 +74,43 @@ public abstract class TestRunner {
     }
     */
 
+    @Attachment(value = "{0}", type = "image/png")
+    public byte[] saveImageAttach(String attachName) {
+        byte[] result = null;
+        File scrFile = ((TakesScreenshot) DriverWrapper.getDriver()).getScreenshotAs(OutputType.FILE);
+        try {
+            result = Files.readAllBytes(scrFile.toPath());
+            FileUtils.copyFile(scrFile, new File(System.getenv().get("USERPROFILE") + "\\Downloads\\screenshot.png"));
+        } catch (IOException e) {
+            // TODO Create Custom Exception 
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Attachment(value = "{0}", type = "text/plain")
+    public byte[] saveHtmlAttach(String attachName) {
+        return DriverWrapper.getDriver().getPageSource().getBytes();
+    }
+
+    
+    @Attachment(value = "{0}", type = "text/plain")
+    public byte[] saveTextAttach(String attachName, String fileName) {
+        logger.info("attachName = " + attachName + "  fileName = " + fileName);
+        //String path = this.getClass().getResource("/").getPath();
+        //String path = path.replace("d:/", fileName);
+        //path = path.substring(1);
+        String path = "d:/" + fileName;
+        byte[] result = null;
+        try {
+            result = Files.readAllBytes(Paths.get(path));
+        } catch (IOException e) {
+            // TODO Create Custom Exception 
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     @BeforeSuite
     public void beforeSuite() {
         // System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
@@ -112,18 +161,24 @@ public abstract class TestRunner {
     @AfterMethod
     public void afterMethod(ITestResult result) {
         presentationSleep(); // For Presentation ONLY
+        logger.info("Test " + result.getName() + " done");
         if (!result.isSuccess()) {
             String testName = result.getName();
             System.out.println("***TC error, name = " + testName + " ERROR");
+            logger.error("Test " + result.getName() + " ERROR");
             // Take Screenshot, Save sourceCode, Save to log, Prepare report, Return to previous state, logout, etc.
             // driver.manage().deleteAllCookies();
             // clear cache; delete cookie; delete session;
             //takeScreenShot(testName);
             //takePageSource(testName);
+            saveImageAttach("PICTURE Test name = " + result.getName());
+            saveHtmlAttach("HTML User is "+ result.getName());
+            //saveTextAttach("Attach file: testng.xml = ", "testng.xml");
             DriverWrapper.deleteCookies();
             // driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
             // session;
         }
+        saveTextAttach("Attach file: testng.xml = ", "testng.xml");
         //driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         //driver.findElement(By.cssSelector("#logo > a")).click();
         //driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();

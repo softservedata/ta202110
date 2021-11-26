@@ -2,6 +2,8 @@ package com.softserve.edu.opencart.pages;
 
 import org.openqa.selenium.WebElement;
 
+import io.qameta.allure.Step;
+
 public abstract class AccountSidebarLoggedPart extends AccountSidebarPart {
 
     private WebElement editAccountRight;
@@ -72,6 +74,7 @@ public abstract class AccountSidebarLoggedPart extends AccountSidebarPart {
 
     // Business Logic
 
+    @Step("STEP GOTO EDIT ACCOUNT RIGHT")
     public EditAccountPage gotoEditAccountRight() {
         clickEditAccountRight();
         //return new EditAccountPage(driver);

@@ -21,6 +21,7 @@
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
 		<aspectj.version>1.9.7</aspectj.version>
+		<allure.version>2.16.1</allure.version>
 		<!-- - - - - - Password - - - - - -->
 		<application.password>null123</application.password>
 	</properties>
@@ -48,7 +49,7 @@
 			<version>5.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
@@ -170,6 +171,20 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- - - - Reports - - - -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+			<!-- <scope>test</scope> -->
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -200,9 +215,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 				<configuration>
-<!-- 					<includes> -->
-<!-- 						<include>**/*.java</include> -->
-<!-- 					</includes> -->
+					<!-- <includes> -->
+					<!-- <include>**/*.java</include> -->
+					<!-- </includes> -->
 					<systemPropertyVariables>
 						<surefire.application.password>
 							${application.password}
@@ -210,11 +225,14 @@
 					</systemPropertyVariables>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 					<suiteXmlFiles>
-						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+						<suiteXmlFile>testng.xml</suiteXmlFile>
 						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-<!-- 						<suiteXmlFile>testng.xml</suiteXmlFile> -->
-						<suiteXmlFile>testng3par.xml</suiteXmlFile>
+						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+<!-- 						<suiteXmlFile>testng3par.xml</suiteXmlFile> -->
 					</suiteXmlFiles>
+					<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
 				</configuration>
 			</plugin>
 

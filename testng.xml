@@ -5,7 +5,7 @@
 	<parameter name="url"
 		value="http://10.26.34.177/opencart/upload/" />
 	<!-- <parameter name="url" value="http://taqc-opencart.epizy.com" /> -->
-<!-- 	<parameter name="browsername" value="chrome" /> -->
+	<!-- <parameter name="browsername" value="chrome" /> -->
 	<parameter name="browsername" value="firefox" />
 
 	<!-- 3 ERROR 5 WARNING 7 INFO 9 TRACE -->
@@ -18,9 +18,10 @@
 			<!-- <class name="com.softserve.testng.FirstNg" /> -->
 			<!-- <class name="com.softserve.edu.opencart.tests.LoginTest" /> -->
 			<!-- <class name="com.softserve.edu.opencart.test.RegisterTest" /> -->
-			<class name="com.softserve.edu.opencart.test.CurrencyTest" />
-<!-- 			<class name="com.softserve.edu.opencart.test.ProductSearchTest" /> -->
+			<!-- <class name="com.softserve.edu.opencart.test.CurrencyTest" /> -->
+			<!-- <class name="com.softserve.edu.opencart.test.ProductSearchTest" /> -->
 			<!-- <class name="com.softserve.edu.opencart.tests.LoginTest"> -->
+			<class name="com.softserve.edu.opencart.test.LoginTest" />
 			<!-- <methods> -->
 			<!-- <include name="checkSuccessful" /> -->
 			<!-- </methods> -->
