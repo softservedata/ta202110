@@ -4,4 +4,6 @@ public interface Currency {
     String getPound();
     String getDollar();
     String getEuro();
+
+
 }

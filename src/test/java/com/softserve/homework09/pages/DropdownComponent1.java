@@ -9,7 +9,8 @@ public class DropdownComponent1 {
     private WebDriver driver;
 
     private WebElement currency;
-
+    private WebElement currency1;
+    private WebElement currency2;
 
 
     public DropdownComponent1(WebDriver driver) {
@@ -19,18 +20,20 @@ public class DropdownComponent1 {
 
     private void initElements() {
         currency = driver.findElement(By.xpath("//button[@name='EUR']"));
+        currency1 = driver.findElement(By.xpath("//button[@name='USD']"));
+        currency2 = driver.findElement(By.xpath("//button[@name='GBP']"));
 
     }
 
     // Page Object
 
     // currency
-    public WebElement getCurrency() {
+    public static WebElement getCurrency() {
         // return driver.findElement(By.xpath("//button[@name='EUR']"));
         return getCurrency();
     }
 
-    public String getCurrencyText() {
+    public static String getCurrencyText() {
         return getCurrency().getText();
     }
 
