@@ -1,8 +1,11 @@
 package com.softserve.homework08;
 
+import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+@Ignore
 
 public class DropdownComponent {
 
@@ -60,7 +63,7 @@ public class DropdownComponent {
         return getCurrencypound();
     }
 
-    public String getCurrencypoundText() {
+    public String getCurrencydollarText() {
         return getCurrencypound().getText();
     }
 
