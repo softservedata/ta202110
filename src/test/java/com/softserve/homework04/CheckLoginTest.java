@@ -1,17 +1,17 @@
 package com.softserve.homework04;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest{
+public class CheckLoginTest {
 
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
