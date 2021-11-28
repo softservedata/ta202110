@@ -1,7 +1,12 @@
 package com.softserve.edu.opencart.data;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public final class UserRepository {
     private static volatile UserRepository instance = null;
+    //
+    private final String TIME_TEMPLATE = "HH_mm_ss_S";
 
     private UserRepository() {
     }
@@ -59,11 +64,28 @@ public final class UserRepository {
                 .build();
     }
     
-    /*-
     public IUser getNewUser() {
-        
+        String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+        String newEmail = "temp" + currentTime + "@gmail.com";
+        return User.get()
+                .setFirstname("firstName3")
+                .setLastname("lastName3")
+                .setEmail(newEmail)
+                .setTelephone("telephone3")
+                .setAddress1("address13")
+                .setCity("city3")
+                .setPostcode("postCode3")
+                .setCountry("Ukraine")
+                .setRegion("Kyiv")
+                .setPassword(System.getenv().get("MY_PASSWORD"))
+                //.setPassword("password3")
+                .setSubscribe(true)
+                .setFax("fax3")
+                .build();
     }
     
+    
+    /*-
     public IUser getInvalidUser() {
         
     }
