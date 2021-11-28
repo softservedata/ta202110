@@ -11,6 +11,7 @@ public class HomePage extends TopPart {
     public static final String EXPECTED_IPHONE6 = "iPhone6";
     //
     private WebElement slideshow0;
+    private WebElement priceMacBook;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -20,6 +21,9 @@ public class HomePage extends TopPart {
     private void initElements() {
         // init elements
         slideshow0 = driver.findElement(By.id("slideshow0"));
+        priceMacBook = driver.findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+       
+        
     }
 
     // Page Object
@@ -30,10 +34,7 @@ public class HomePage extends TopPart {
     }
 
     public WebElement getSlideshow0FirstImage() {
-        // return getSlideshow0().findElement(By.cssSelector("a > img"));
         return getSlideshow0().findElement(By.xpath(".//a/img"));
-        // return Slideshow0.findElement(By.xpath("//a/img")); // ERROR
-        // return driver.findElement(By.xpath("//div[@id='slideshow0']//a/img"));
     }
 
     public String getSlideshow0FirstImageAttributeText(String attribute) {
@@ -50,9 +51,30 @@ public class HomePage extends TopPart {
     
     //public HomePage chooseCurrency(String currency) {
     public HomePage chooseCurrency(Currencies currency) {
-        //logger.debug("start chooseCurrency() with currency = " + currency.toString());
         clickCurrencyByPartialName(currency);
-        //logger.debug("end chooseCurrency() with currency = " + currency.toString());
+        return new HomePage(driver);
+    }
+    
+
+    
+    //  MacBook item
+    public WebElement getPriceMacBook() {
+		return priceMacBook;
+	}
+    
+    public String getPriceMacBookText() {
+    	return priceMacBook.getText();
+		
+	}
+    
+    public HomePage choosePriceMacBook() {
+    	getPriceMacBookText();
+        return new HomePage(driver);
+    }
+    
+    public HomePage scrollToMacBook() {
+        WebElement webElement = getPriceMacBook();
+        scrollToElement(webElement);
         return new HomePage(driver);
     }
 
