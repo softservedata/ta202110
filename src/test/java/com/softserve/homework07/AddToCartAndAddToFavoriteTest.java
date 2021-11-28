@@ -99,11 +99,11 @@ public class AddToCartAndAddToFavoriteTest {
         presentationSleep();
 
         //Add iPhone 3 to Favorite
-        WebElement iPhone3AddToWishList = new WebDriverWait(driver,10).until(ExpectedConditions.
+        WebElement iPhone3AddToFavorote = new WebDriverWait(driver,10).until(ExpectedConditions.
                 visibilityOfElementLocated(By.xpath("//a[text()='iPhone 3']/../../"
                         + "following-sibling::div[@class='button-group']/button[@type='button']"
                         + "/i[@class='fa fa-heart']")));
-        iPhone3AddToWishList.click();
+        iPhone3AddToFavorote.click();
 
         //Verify that success message about iPhone added to the favorite is displayed
         WebElement iPhone3AddedToWishListSuccessMessage = new WebDriverWait(driver,10).until(ExpectedConditions.
