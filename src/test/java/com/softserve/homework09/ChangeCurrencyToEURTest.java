@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 public class ChangeCurrencyToEURTest extends TestRunner {
 
+
     @DataProvider
     public Object[][] dataCurrencies() {
         return new Object[][] {
