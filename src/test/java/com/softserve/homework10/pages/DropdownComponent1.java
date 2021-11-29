@@ -1,4 +1,4 @@
-package com.softserve.homework09.pages;
+package com.softserve.homework10.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,30 +38,6 @@ public class DropdownComponent1 {
 
     public void clickCurrency() {
         getCurrency().click();
-    }
-
-    // currency1
-    public static WebElement getCurrency1() {
-        return getCurrency1();
-    }
-
-    public static String getCurrency1Text() {
-        return getCurrency1().getText();
-    }
-
-    public void clickCurrency1() { getCurrency1().click();}
-
-    // currency1
-    public static WebElement getCurrency2() {
-        return getCurrency2();
-    }
-
-    public static String getCurrency2Text() {
-        return getCurrency2().getText();
-    }
-
-    public void clickCurrency2() {
-        getCurrency2().click();
     }
 
 

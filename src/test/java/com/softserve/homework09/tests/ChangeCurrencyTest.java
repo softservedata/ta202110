@@ -1,38 +1,43 @@
 package com.softserve.homework09.tests;
 
-import com.softserve.homework09.data.Currency;
 import com.softserve.homework09.pages.HomePage;
+import com.softserve.homework09.pages.EditAccountPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.softserve.homework09.pages.DropdownComponent1;
 
-public class ChangeCurrency {
+public class ChangeCurrencyTest extends TestRunner {
 
     private HomePage homePage;
+    private DropdownComponent1 dropdownComponent1;
 
     @DataProvider
     public Object[][] currencychosen() {
         return new Object[][] {
 
-                { DropdownComponent1.getCurrency() },
+                { dropdownComponent1.getCurrency() },
         };
     }
 
     @Test(dataProvider = "currencychosen")
-    public void checkSuccessful(Currency currency) {
+    public void checkSuccessful(DropdownComponent1 currency) {
         //
         // Steps
-        ClickCurrency clickCurrency = makechoice()
+        ClickCurrency clickCurrency = setCurrency()
                 .gotoHomePage()
                 .successfulCurrencyclick(currency)
-                .successfulChoice(euro)
+                .successfulChoice(EURO)
                 .gotoHomePage();
 
 
         // Check
-        
-        Assert.assertEquals(DropdownComponent1.getCurrencyText());
+        HomePage homePage = editAccountPage
+        .gotoLogoutRight()
+        .gotoContinue();
+
+
+        Assert.assertEquals(dropdownComponent1.getCurrencyText());
        
         // Check
         Assert.assertTrue(homePage
@@ -40,4 +45,9 @@ public class ChangeCurrency {
                 .contains(HomePage.EXPECTED_IPHONE6));
      
 }
+
+    private DropdownComponent1 setCurrency() {
+    }
+
+/
 }
