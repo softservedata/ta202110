@@ -14,6 +14,7 @@ public class InvalidUserTest extends TestRunner {
 
         private HomePage homePage;
         private UnsuccessfulLoginPage unsuccessfulLoginPage;
+        private EditAccountPage editAccountPage;
 
     @DataProvider
     public Object[][] dataFailed() {
@@ -28,11 +29,11 @@ public class InvalidUserTest extends TestRunner {
         // Steps
         EditAccountPage editAccountPage = loadApplication()
                 .gotoLoginPage()
-                .failedLogin(user)
+                .unsuccessfulLoginPage(user)
                 .gotoEditAccountRight();
 
         // Check
-        Assert.assertEquals(editAccountPage.getFirstNameFieldText(), user.getFirstname());
+        Assert.assertEquals(unsuccessfulLoginPage.getAlertWarningText(), user.getFirstname());
 
         // Return to Previous State
        HomePage homePage = editAccountPage
