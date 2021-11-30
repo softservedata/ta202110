@@ -1,4 +1,4 @@
-package com.softserve.homework09.pages;
+package com.softserve.homework11.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +18,6 @@ public class HomePage extends TopPart {
     private void initElements() {
         // init elements
         slideshow0 = driver.findElement(By.id("slideshow0"));
-       // dropdown = driver.findElement(By.cssSelector("button.btn.btn-link.dropdown-toggle"));
     }
 
     // Page Object
@@ -43,9 +42,7 @@ public class HomePage extends TopPart {
         return getSlideshow0FirstImageAttributeText(TAG_ATTRIBUTE_SRC);
     }
 
-
     // Functional
-
 
     // Business Logic
 

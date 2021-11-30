@@ -1,14 +1,13 @@
-package com.softserve.homework09.tests;
+package com.softserve.homework11.tests;
 
 
+import com.softserve.homework11.data.IUser;
+import com.softserve.homework11.data.UserRepository;
+import com.softserve.homework11.pages.EditAccountPage;
+import com.softserve.homework11.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import com.softserve.homework09.data.IUser;
-import com.softserve.homework09.data.UserRepository;
-import com.softserve.homework09.pages.EditAccountPage;
-import com.softserve.homework09.pages.HomePage;
 
 public class LoginTest extends TestRunner {
 
@@ -25,6 +24,7 @@ public class LoginTest extends TestRunner {
     @DataProvider
     public Object[][] dataSuccessful() {
         return new Object[][] {
+                //{ UserRepository.get().getHahaha() },
                 { UserRepository.get().getAwdrt() },
         };
     }

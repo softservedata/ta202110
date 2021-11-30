@@ -1,22 +1,22 @@
 package com.softserve.homework09.tests;
 
-import com.softserve.homework09.pages.HomePage;
-import com.softserve.homework09.pages.EditAccountPage;
+import com.softserve.homework09.pages.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.softserve.homework09.pages.DropdownComponent1;
 
 public class ChangeCurrencyTest extends TestRunner {
 
     private HomePage homePage;
     private DropdownComponent1 dropdownComponent1;
+    private TopPart topPart;
 
     @DataProvider
     public Object[][] currencychosen() {
         return new Object[][] {
 
-                { dropdownComponent1.getCurrency() },
+                { dropdownComponent1.clickCurrency(); },
         };
     }
 
@@ -24,30 +24,24 @@ public class ChangeCurrencyTest extends TestRunner {
     public void checkSuccessful(DropdownComponent1 currency) {
         //
         // Steps
-        ClickCurrency clickCurrency = setCurrency()
-                .gotoHomePage()
-                .successfulCurrencyclick(currency)
-                .successfulChoice(EURO)
+        HomePage gotoHomePage = loadApplication()
+                .gotoLoginPage()
+                .wait(10)
+                .openDropdown()
+                /*.getDropdown()
+                .clickDropdown()
+                .chooseCurrency(currency)
+                .getCurrency()
+                .getCurrencyText()
+                .clickCurrency(currency)*/
+                .chooseCurrency()
                 .gotoHomePage();
 
 
-        // Check
-        HomePage homePage = editAccountPage
-        .gotoLogoutRight()
-        .gotoContinue();
 
-
-        Assert.assertEquals(dropdownComponent1.getCurrencyText());
+        Assert.assertEquals(dropdownComponent1.getDropdown().wait().getCurrencyText());
        
-        // Check
-        Assert.assertTrue(homePage
-                .getSlideshow0FirstImageAttributeSrcText()
-                .contains(HomePage.EXPECTED_IPHONE6));
-     
-}
 
-    private DropdownComponent1 setCurrency() {
-    }
+   }
 
-/
 }
