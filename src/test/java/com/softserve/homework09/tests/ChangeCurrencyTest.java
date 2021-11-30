@@ -39,7 +39,7 @@ public class ChangeCurrencyTest extends TestRunner {
 
 
 
-        Assert.assertEquals(dropdownComponent1.getDropdown().wait().getCurrencyText());
+        Assert.assertEquals(dropdownComponent1.getDropdown().wait().getCurrency().getCurrencyText());
        
 
    }

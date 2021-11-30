@@ -1,9 +1,14 @@
 package com.softserve.homework11.pages;
 
+import com.softserve.homework11.data.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.homework11.data.Currencies;
+import com.softserve.homework11.tools.search.Search;
+import com.softserve.homework11.tools.search.SearchStrategy;
 
 public abstract class TopPart {
 
@@ -19,6 +24,7 @@ public abstract class TopPart {
     //
     //protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected WebDriver driver;
+    protected Search search;
     //
     private WebElement currency;
     private WebElement myAccount;
@@ -31,11 +37,13 @@ public abstract class TopPart {
     //
     // List<MenuComponent> menu;
     //
+    private DropdownComponent dropdownComponent;
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
+        //search = SearchStrategy.getSearch();
         initElements();
     }
 
@@ -49,6 +57,15 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        //
+//        currency = search.cssSelector(".btn.btn-link.dropdown-toggle");
+//        myAccount = search.cssSelector(".list-inline > li > a.dropdown-toggle");
+//        wishList = search.id("wishlist-total");
+//        shoppingCart = search.cssSelector("a[title='Shopping Cart']");
+//        logo = search.cssSelector("#logo a");
+//        searchTopField = search.name("search");
+//        searchTopButton = search.cssSelector("button.btn.btn-default");
+//        cartButton = search.cssSelector("#cart > button");
     }
 
     // Page Object
@@ -158,6 +175,39 @@ public abstract class TopPart {
         getCartButton().click();
     }
 
+    // dropdownComponent
+    protected DropdownComponent getDropdownComponent() {
+        //LeaveUtils.castExceptionByCondition(dropdownOptions == null, OPTION_NULL_MESSAGE);
+        if (dropdownComponent == null) {
+            // TODO Develop Custom Exception
+            throw new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return dropdownComponent;
+    }
+
+    private DropdownComponent createDropdownComponent(By searchLocator) {
+        dropdownComponent = new DropdownComponent(driver, searchLocator);
+        return getDropdownComponent();
+    }
+
+    private void clickDropdownComponentByPartialName(String optionName) {
+        //LeaveUtils.castExceptionByCondition(!getDropdownOptions().isExistDropdownOptionByPartialName(optionName),
+        //        String.format(OPTION_NOT_FOUND_MESSAGE, optionName, dropdownOptions.getListOptionsText().toString()));
+        if (!getDropdownComponent().isExistDropdownOptionByPartialName(optionName)) {
+            // TODO Develop Custom Exception
+            throw new RuntimeException(String.format(OPTION_NOT_FOUND_MESSAGE, optionName,
+                    getDropdownComponent().getListOptionsText().toString()));
+        }
+        getDropdownComponent().clickDropdownOptionByPartialName(optionName);
+        dropdownComponent = null;
+        //closeDropdownComponent();
+    }
+
+    private void closeDropdownComponent() {
+        clickSearchTopField();
+        dropdownComponent = null;
+    }
+
     // dropdownGuest
     protected GuestDropdown getDropdownGuest() {
         if (dropdownGuest == null) {
@@ -169,6 +219,7 @@ public abstract class TopPart {
 
     private GuestDropdown createDropdownGuest() {
         dropdownGuest = new GuestDropdown(driver);
+        //dropdownGuest = new GuestDropdown();
         return getDropdownGuest();
     }
 
@@ -235,6 +286,21 @@ public abstract class TopPart {
 
     // Functional
 
+    // currency
+    private void openCurrencyDropdownComponent() {
+        //clickSearchTopField();
+        closeDropdownComponent();
+        clickCurrency();
+        createDropdownComponent(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
+    }
+
+    //protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
+    protected void clickCurrencyByPartialName(Currencies optionName) {
+        openCurrencyDropdownComponent();
+        //clickDropdownComponentByPartialName(currencyName);
+        clickDropdownComponentByPartialName(optionName.toString());
+    }
+
     // myAccount
     protected void openMyAccountDropdown() {
         clickSearchTopField();
@@ -284,3 +350,5 @@ public abstract class TopPart {
     }
 
 }
+
+

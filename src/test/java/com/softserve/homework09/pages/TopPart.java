@@ -283,4 +283,5 @@ public abstract class TopPart {
         return new AccountLogoutPage(driver);
     }
 
+    public abstract com.softserve.homework11.pages.TopPart openDropdown();
 }
