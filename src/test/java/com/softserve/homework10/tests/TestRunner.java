@@ -20,6 +20,7 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public abstract class TestRunner {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
@@ -75,8 +76,8 @@ public abstract class TestRunner {
     @BeforeClass
     public void beforeClass() {
         driver = new ChromeDriver();
-        //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+        driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         driver.manage().window().maximize();
     }
 

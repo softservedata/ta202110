@@ -60,15 +60,29 @@ public final class UserRepository {
                 .build();
     }
 
-    /*-
-    public IUser getNewUser() {
+    
+    public IUser getNewUser() { return getInvalidUser();}
 
-    }
 
     public IUser getInvalidUser() {
+        return User.get()
+                .setFirstname("InvalidName")
+                .setLastname("boomboom")
+                .setEmail("zzxxx99@gmail.com")
+                .setTelephone("boomboom")
+                .setAddress1("address2")
+                .setCity("city_7")
+                .setPostcode("postcode")
+                .setCountry("country")
+                .setRegion("region")
+                .setPassword("boom90")
+                .setSubscribe(true)
+                .setFax("fax")
+                .setCompany("company")
+                .setAddress2("address3")
+                .build();
 
     }
-    */
 
     /*-
     public List<IUser> fromCsv(String filename) {

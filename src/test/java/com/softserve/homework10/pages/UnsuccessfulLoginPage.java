@@ -1,5 +1,6 @@
 package com.softserve.homework10.pages;
 
+import com.softserve.homework10.data.IUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,6 +34,27 @@ public class UnsuccessfulLoginPage extends LoginPage {
 
     // Functional
 
-    // Business Logic
+    private void enterEmail(String email) {
+        clickEmailField();
+        clearEmailField();
+        setEmail(email);
+    }
 
+    private void enterPassword(String password) {
+        clickPasswordField();
+        clearPasswordField();
+        setPassword(password);
+    }
+
+    public void fillLogin(IUser invalidUser) {
+        enterEmail(invalidUser.getEmail());
+        enterPassword(invalidUser.getPassword());
+        clickLoginButton();
+    }
+
+    // Business Logic
+    public EditAccountPage unsuccessfulLoginPage(IUser invalidUser) {
+        fillLogin(invalidUser);
+        return new UnsuccessfulLoginPage(driver);
+    }
 }
