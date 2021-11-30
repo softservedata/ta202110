@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.softserve.edu.opencart.pages.HomePage;
-import com.softserve.edu.opencart.tools.browser.Browsers;
 import com.softserve.edu.opencart.tools.browser.DriverWrapper;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public abstract class TestRunner {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
@@ -82,6 +82,7 @@ public abstract class TestRunner {
 
     @BeforeMethod
     public void beforeMethod() {
+        SearchStrategy.setImplicitStrategy();
         //driver.get(BASE_URL);
         // TODO
         //DriverWrapper.setDriver(Browsers.CHROME_TEMPORARY);

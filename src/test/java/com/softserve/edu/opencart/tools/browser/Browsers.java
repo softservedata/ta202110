@@ -1,7 +1,5 @@
 package com.softserve.edu.opencart.tools.browser;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -36,8 +34,12 @@ class FirefoxWithoutUI implements Browser {
 
 class ChromeTemporary implements Browser {
     public WebDriver getBrowser() {
+        //System.out.println("***ChromeTemporary START");
         WebDriverManager.chromedriver().setup();
-        return new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
+        //driver.manage().window().maximize();
+        //return new ChromeDriver();
+        return driver;
     }
 }
 
@@ -66,10 +68,11 @@ public enum Browsers {
     }
 
     public WebDriver runBrowser() {
-        WebDriver driver = browser.getBrowser();
+        //WebDriver driver = browser.getBrowser();
         // TODO move to strategy
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-        return driver;
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //driver.manage().window().maximize();
+        //return driver;
+        return browser.getBrowser();
     }
 }

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 
 public abstract class TopPart {
@@ -22,6 +24,7 @@ public abstract class TopPart {
     //
     //protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected WebDriver driver;
+    protected Search search;
     //
     private WebElement currency;
     private WebElement myAccount;
@@ -40,6 +43,7 @@ public abstract class TopPart {
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
+        //search = SearchStrategy.getSearch();
         initElements();
     }
 
@@ -53,6 +57,15 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        //
+//        currency = search.cssSelector(".btn.btn-link.dropdown-toggle");
+//        myAccount = search.cssSelector(".list-inline > li > a.dropdown-toggle");
+//        wishList = search.id("wishlist-total");
+//        shoppingCart = search.cssSelector("a[title='Shopping Cart']");
+//        logo = search.cssSelector("#logo a");
+//        searchTopField = search.name("search");
+//        searchTopButton = search.cssSelector("button.btn.btn-default");
+//        cartButton = search.cssSelector("#cart > button");
     }
 
     // Page Object
@@ -206,6 +219,7 @@ public abstract class TopPart {
 
     private GuestDropdown createDropdownGuest() {
         dropdownGuest = new GuestDropdown(driver);
+        //dropdownGuest = new GuestDropdown();
         return getDropdownGuest();
     }
 
