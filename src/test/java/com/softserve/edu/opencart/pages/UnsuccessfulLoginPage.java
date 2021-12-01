@@ -35,8 +35,4 @@ public class UnsuccessfulLoginPage extends LoginPage {
 
     // Business Logic
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/ocart

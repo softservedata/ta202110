@@ -99,7 +99,3 @@ public class LoggedDropdown {
     // Business Logic
 
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/ocart

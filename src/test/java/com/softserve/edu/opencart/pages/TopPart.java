@@ -5,13 +5,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-<<<<<<< HEAD
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
-=======
->>>>>>> origin/ocart
 public abstract class TopPart {
 
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -26,10 +23,7 @@ public abstract class TopPart {
     //
     //protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected WebDriver driver;
-<<<<<<< HEAD
     protected Search search;
-=======
->>>>>>> origin/ocart
     //
     private WebElement currency;
     private WebElement myAccount;
@@ -42,19 +36,13 @@ public abstract class TopPart {
     //
     // List<MenuComponent> menu;
     //
-<<<<<<< HEAD
     private DropdownComponent dropdownComponent;
-=======
->>>>>>> origin/ocart
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
-<<<<<<< HEAD
         //search = SearchStrategy.getSearch();
-=======
->>>>>>> origin/ocart
         initElements();
     }
 
@@ -68,7 +56,6 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
-<<<<<<< HEAD
         //
 //        currency = search.cssSelector(".btn.btn-link.dropdown-toggle");
 //        myAccount = search.cssSelector(".list-inline > li > a.dropdown-toggle");
@@ -78,8 +65,6 @@ public abstract class TopPart {
 //        searchTopField = search.name("search");
 //        searchTopButton = search.cssSelector("button.btn.btn-default");
 //        cartButton = search.cssSelector("#cart > button");
-=======
->>>>>>> origin/ocart
     }
 
     // Page Object
@@ -189,7 +174,6 @@ public abstract class TopPart {
         getCartButton().click();
     }
 
-<<<<<<< HEAD
     // dropdownComponent
     protected DropdownComponent getDropdownComponent() {
         //LeaveUtils.castExceptionByCondition(dropdownOptions == null, OPTION_NULL_MESSAGE);
@@ -227,12 +211,6 @@ public abstract class TopPart {
     protected GuestDropdown getDropdownGuest() {
         if (dropdownGuest == null) {
             // TODO Develop Custom Exception
-=======
-    // dropdownGuest
-    protected GuestDropdown getDropdownGuest() {
-        if (dropdownGuest == null) {
-            // TODO Develop Custom Exception 
->>>>>>> origin/ocart
             throw new RuntimeException(OPTION_NULL_MESSAGE);
         }
         return dropdownGuest;
@@ -240,10 +218,7 @@ public abstract class TopPart {
 
     private GuestDropdown createDropdownGuest() {
         dropdownGuest = new GuestDropdown(driver);
-<<<<<<< HEAD
         //dropdownGuest = new GuestDropdown();
-=======
->>>>>>> origin/ocart
         return getDropdownGuest();
     }
 
@@ -265,11 +240,7 @@ public abstract class TopPart {
     // dropdownLogged
     protected LoggedDropdown getDropdownLogged() {
         if (dropdownLogged == null) {
-<<<<<<< HEAD
             // TODO Develop Custom Exception
-=======
-            // TODO Develop Custom Exception 
->>>>>>> origin/ocart
             throw new RuntimeException(OPTION_NULL_MESSAGE);
         }
         return dropdownLogged;
@@ -314,7 +285,6 @@ public abstract class TopPart {
 
     // Functional
 
-<<<<<<< HEAD
     // currency
     private void openCurrencyDropdownComponent() {
         //clickSearchTopField();
@@ -330,8 +300,6 @@ public abstract class TopPart {
         clickDropdownComponentByPartialName(optionName.toString());
     }
 
-=======
->>>>>>> origin/ocart
     // myAccount
     protected void openMyAccountDropdown() {
         clickSearchTopField();
@@ -346,11 +314,7 @@ public abstract class TopPart {
     }
 
     protected void scrollToElement(WebElement webElement) {
-<<<<<<< HEAD
         //        Actions action = new Actions(driver);
-=======
-        //        Actions action = new Actions(driver);       
->>>>>>> origin/ocart
         //        action.moveToElement(webElement).perform();
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
@@ -385,7 +349,3 @@ public abstract class TopPart {
     }
 
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/ocart

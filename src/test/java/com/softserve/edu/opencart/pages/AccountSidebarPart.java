@@ -1,8 +1,5 @@
 package com.softserve.edu.opencart.pages;
 
-<<<<<<< HEAD
-public class AccountSidebarPart {
-=======
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -174,5 +171,4 @@ public abstract class AccountSidebarPart extends TopPart {
     // Functional
 
     // Business Logic
->>>>>>> origin/ocart
 }
