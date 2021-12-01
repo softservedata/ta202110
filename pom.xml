@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.softserve.edu</groupId>
-	<artifactId>ta202110ocart</artifactId>
+	<artifactId>ta202110rest</artifactId>
 	<version>1.0</version>
 
 	<packaging>jar</packaging>
@@ -54,24 +54,6 @@
 			<scope>test</scope>
 		</dependency>
 
-<<<<<<< HEAD
-		<!--<dependency>
-=======
-		<!-- <dependency> -->
-		<!-- <groupId>org.testng</groupId> -->
-		<!-- <artifactId>testng</artifactId> -->
-		<!-- <version>6.14.3</version> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-
-		<dependency>
->>>>>>> origin/ocart
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>7.4.0</version>
-			<scope>test</scope>
-		</dependency>-->
-
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -115,28 +97,24 @@
 		</dependency>
 
 		<!-- - - - - - Automation - - - - - -->
-<<<<<<< HEAD
-		<!--<dependency>
-=======
+
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>4.9.3</version>
+		</dependency>
+
 		<!-- <dependency> -->
 		<!-- <groupId>org.seleniumhq.selenium</groupId> -->
-		<!-- <artifactId>selenium-server</artifactId> -->
+		<!-- <artifactId>selenium-java</artifactId> -->
 		<!-- <version>3.141.59</version> -->
-		<!-- <scope>test</scope> -->
 		<!-- </dependency> -->
 
 		<dependency>
->>>>>>> origin/ocart
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.0.0</version>
 			<scope>test</scope>
-		</dependency>-->
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>4.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -167,6 +145,12 @@
 			<version>2.11.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.9</version>
+		</dependency>
+
 		<!-- - - - Logger - - - -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -181,14 +165,14 @@
 			<version>1.7.32</version>
 			<scope>runtime</scope>
 		</dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
 
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
