@@ -1,4 +1,4 @@
-﻿package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ public class GuestDropdown {
 
     private WebDriver driver;
     protected Search search;
-    //
+
     private WebElement register;
     private WebElement login;
 

@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.softserve.edu</groupId>
-	<artifactId>ta202110ocart</artifactId>
+	<artifactId>ta202110ocartpat</artifactId>
 	<version>1.0</version>
 
 	<packaging>jar</packaging>
 
 	<name>${project.artifactId}</name>
-	<url>https://maven.apache.org</url>
+	<url>http://maven.apache.org</url>
 
 	<properties>
 		<!-- - - - - - Encoding - - - - - -->
@@ -54,23 +54,12 @@
 			<scope>test</scope>
 		</dependency>
 
-<<<<<<< HEAD
-		<!--<dependency>
-=======
 		<!-- <dependency> -->
 		<!-- <groupId>org.testng</groupId> -->
 		<!-- <artifactId>testng</artifactId> -->
 		<!-- <version>6.14.3</version> -->
 		<!-- <scope>test</scope> -->
 		<!-- </dependency> -->
-
-		<dependency>
->>>>>>> origin/ocart
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>7.4.0</version>
-			<scope>test</scope>
-		</dependency>-->
 
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -115,9 +104,6 @@
 		</dependency>
 
 		<!-- - - - - - Automation - - - - - -->
-<<<<<<< HEAD
-		<!--<dependency>
-=======
 		<!-- <dependency> -->
 		<!-- <groupId>org.seleniumhq.selenium</groupId> -->
 		<!-- <artifactId>selenium-server</artifactId> -->
@@ -126,17 +112,10 @@
 		<!-- </dependency> -->
 
 		<dependency>
->>>>>>> origin/ocart
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.0.0</version>
 			<scope>test</scope>
-		</dependency>-->
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>4.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -181,14 +160,8 @@
 			<version>1.7.32</version>
 			<scope>runtime</scope>
 		</dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
 
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -218,15 +191,20 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 				<configuration>
-					<includes>
-						<include>**/*.java</include>
-					</includes>
+					<!-- 					<includes> -->
+					<!-- 						<include>**/*.java</include> -->
+					<!-- 					</includes> -->
 					<systemPropertyVariables>
 						<surefire.java.version>
 							${java.version}
 						</surefire.java.version>
 					</systemPropertyVariables>
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
+					<suiteXmlFiles>
+						<!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
+						<suiteXmlFile>testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 
