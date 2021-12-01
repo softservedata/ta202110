@@ -8,7 +8,7 @@ import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.test.TestRunner;
 
-public class UpdateCurrency extends TestRunner {
+public class updateCurrency extends TestRunner {
 
     @DataProvider(parallel = true)
     public Object[][] searchCurrencies() {
