@@ -95,7 +95,11 @@ public class LoginPage extends AccountSidebarGuestPart {
     }
 
     public void fillLogin(IUser user) {
+<<<<<<< HEAD
         //public void fillLogin(String email, String password) {
+=======
+    //public void fillLogin(String email, String password) {
+>>>>>>> origin/ocart
         enterEmail(user.getEmail());
         enterPassword(user.getPassword());
         //enterEmail(email);
@@ -106,14 +110,22 @@ public class LoginPage extends AccountSidebarGuestPart {
     // Business Logic
 
     public MyAccountPage successfulLogin(IUser validUser) {
+<<<<<<< HEAD
         //public MyAccountPage successfulLogin(String email, String password) {
+=======
+    //public MyAccountPage successfulLogin(String email, String password) {
+>>>>>>> origin/ocart
         fillLogin(validUser);
         //fillLogin(email, password);
         return new MyAccountPage(driver);
     }
 
     public UnsuccessfulLoginPage unsuccessfulLoginPage(IUser invalidUser) {
+<<<<<<< HEAD
         //public UnsuccessfulLoginPage(String email, String password) {
+=======
+    //public UnsuccessfulLoginPage unsuccessfulLoginPage(String email, String password) {
+>>>>>>> origin/ocart
         fillLogin(invalidUser);
         //fillLogin(email, password);
         return new UnsuccessfulLoginPage(driver);

@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages;
 
+<<<<<<< HEAD
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,12 +29,19 @@ public class RegisterPage extends AccountSidebarGuestPart {
     private WebElement privacyPolicy;
     private WebElement continueButton;
 
+=======
+import org.openqa.selenium.WebDriver;
+
+public class RegisterPage extends AccountSidebarGuestPart {
+
+>>>>>>> origin/ocart
     public RegisterPage(WebDriver driver) {
         super(driver);
         initElements();
     }
 
     private void initElements() {
+<<<<<<< HEAD
         firstname = driver.findElement(By.id("input-firstname"));
         lastname = driver.findElement(By.id("input-lastname"));
         email = driver.findElement(By.id("input-email"));
@@ -52,10 +60,14 @@ public class RegisterPage extends AccountSidebarGuestPart {
         subscribeNo = driver.findElement(By.cssSelector("label.radio-inline > input[value='0']"));
         privacyPolicy = driver.findElement(By.name("agree"));
         continueButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+=======
+        // init elements
+>>>>>>> origin/ocart
     }
 
     // Page Object
 
+<<<<<<< HEAD
     // firstname
     public WebElement getFirstname() {
         return firstname;
@@ -474,5 +486,10 @@ public class RegisterPage extends AccountSidebarGuestPart {
 
     //public RegisterPage unsuccessfullRegisterUser(IUser invalidUser) {
     //}
+=======
+    // Functional
+
+    // Business Logic
+>>>>>>> origin/ocart
 
 }

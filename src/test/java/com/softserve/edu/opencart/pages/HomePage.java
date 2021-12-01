@@ -4,21 +4,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+<<<<<<< HEAD
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.Product;
 
+=======
+>>>>>>> origin/ocart
 public class HomePage extends TopPart {
 
     public static final String EXPECTED_IPHONE6 = "iPhone6";
     //
     private WebElement slideshow0;
+<<<<<<< HEAD
     //
     private ProductsContainer productsContainer;
+=======
+>>>>>>> origin/ocart
 
     public HomePage(WebDriver driver) {
         super(driver);
         initElements();
+<<<<<<< HEAD
         productsContainer = new ProductsContainer(driver);
+=======
+>>>>>>> origin/ocart
     }
 
     private void initElements() {
@@ -48,15 +57,19 @@ public class HomePage extends TopPart {
         return getSlideshow0FirstImageAttributeText(TAG_ATTRIBUTE_SRC);
     }
 
+<<<<<<< HEAD
     // productComponentsContainer
     public ProductsContainer getProductComponentsContainer() {
         return productsContainer;
     }
 
+=======
+>>>>>>> origin/ocart
     // Functional
 
     // Business Logic
 
+<<<<<<< HEAD
     //public HomePage chooseCurrency(String currency) {
     public HomePage chooseCurrency(Currencies currency) {
         //logger.debug("start chooseCurrency() with currency = " + currency.toString());
@@ -73,4 +86,6 @@ public class HomePage extends TopPart {
         return new HomePage(driver);
     }
 
+=======
+>>>>>>> origin/ocart
 }

@@ -64,12 +64,22 @@ public abstract class AccountSidebarGuestPart extends AccountSidebarPart {
     }
 
     // Functional
+<<<<<<< HEAD
 
     // Business Logic
 
+=======
+    
+    // Business Logic
+    
+>>>>>>> origin/ocart
     public LoginPage gotoLoginRight() {
         clickLoginRight();
         return new LoginPage(driver);
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/ocart
