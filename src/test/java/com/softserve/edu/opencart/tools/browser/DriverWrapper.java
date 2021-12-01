@@ -3,7 +3,6 @@ package com.softserve.edu.opencart.tools.browser;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.softserve.edu.opencart.tools.search.Browsers;
 import org.openqa.selenium.WebDriver;
 
 public final class DriverWrapper {
@@ -52,4 +51,5 @@ public final class DriverWrapper {
             }
         }
     }
+
 }
