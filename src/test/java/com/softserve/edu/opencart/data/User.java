@@ -38,6 +38,7 @@ interface IRegion {
 
 interface IPassword {
     ISubscribe setPassword(String password);
+    //ISubscribe setToken(String token);
 }
 
 interface ISubscribe {
@@ -111,14 +112,14 @@ public final class User implements IFirstname, ILastname, IEmail,
         //this.password = "";
         //this.subscribe = true;
     }
-    
+
     //public static User get() {
     public static IFirstname get() {
         return new User();
     }
-    
+
     // setters
-    
+
     //public void setFirstname(String firstname) {
     //public User setFirstname(String firstname) {
     public ILastname setFirstname(String firstname) {
@@ -190,14 +191,14 @@ public final class User implements IFirstname, ILastname, IEmail,
         this.subscribe = subscribe;
         return this;
     }
-    
+
     //public User build() {
     public IUser build() {
         return this;
     }
-    
+
     // gettres
-    
+
     public String getFirstname() {
         return firstname;
     }
@@ -256,21 +257,21 @@ public final class User implements IFirstname, ILastname, IEmail,
 
     @Override
     public String toString() {
-        return "User [firstname=" + firstname 
-                + "\nlastname=" + lastname 
-                + "\nemail=" + email 
-                + "\ntelephone=" + telephone 
-                + "\nfax=" + fax 
-                + "\ncompany=" + company 
+        return "User [firstname=" + firstname
+                + "\nlastname=" + lastname
+                + "\nemail=" + email
+                + "\ntelephone=" + telephone
+                + "\nfax=" + fax
+                + "\ncompany=" + company
                 + "\naddress1=" + address1
-                + "\naddress2=" + address2 
-                + "\ncity=" + city 
-                + "\npostcode=" + postcode 
-                + "\ncountry=" + country 
+                + "\naddress2=" + address2
+                + "\ncity=" + city
+                + "\npostcode=" + postcode
+                + "\ncountry=" + country
                 + "\nregion=" + region
-                + "\npassword=" + password 
+                + "\npassword=" + password
                 + "\nsubscribe=" + subscribe + "]";
     }
-    
-    
+
+
 }

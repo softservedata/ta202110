@@ -76,3 +76,4 @@ public enum Browsers {
         return browser.getBrowser();
     }
 }
+
