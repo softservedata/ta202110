@@ -4,45 +4,31 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.opencart.data.IUser;
-import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.EditAccountPage;
 import com.softserve.edu.opencart.pages.HomePage;
 
 public class LoginTest extends TestRunner {
 
-    /*-
-    @DataProvider
+    @DataProvider(parallel = true)
     public Object[][] dataSuccessful() {
         return new Object[][] {
-            { "xdknxusqvjeovowpfk@awdrt.com", "awdrt123", "my" },
-            { "hahaha@gmail.com", "qwerty", "hahaha" },
+                { "xdknxusqvjeovowpfk@awdrt.com", "awdrt123", "my" },
+                { "hahaha@gmail.com", "qwerty", "hahaha" },
         };
     }
-    */
 
-    @DataProvider
-    public Object[][] dataSuccessful() {
-        return new Object[][] {
-            //{ UserRepository.get().getHahaha() },
-            { UserRepository.get().getAwdrt() },
-        };
-    }
-    
     @Test(dataProvider = "dataSuccessful")
-    public void checkSuccessful(IUser user) {
+    public void checkSuccessful(String email, String password, String firstName) {
         //
         // Steps
         EditAccountPage editAccountPage = loadApplication()
                 .gotoLoginPage()
-                //.successfulLogin(email, password)
-                .successfulLogin(user)
+                .successfulLogin(email, password)
                 .gotoEditAccountRight();
         presentationSleep();
         //
         // Check
-        //Assert.assertEquals(editAccountPage.getFirstNameFieldText(), firstName);
-        Assert.assertEquals(editAccountPage.getFirstNameFieldText(), user.getFirstname());
+        Assert.assertEquals(editAccountPage.getFirstNameFieldText(), firstName);
         //
         // Return to Previous State
         HomePage homePage = editAccountPage
@@ -56,5 +42,5 @@ public class LoginTest extends TestRunner {
                 .contains(HomePage.EXPECTED_IPHONE6));
         presentationSleep();
     }
-    
+
 }

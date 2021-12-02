@@ -9,6 +9,8 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -31,7 +33,8 @@ public abstract class TestRunner {
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
-    private WebDriver driver;
+    //private WebDriver driver;
+    private Map<Long, WebDriver> drivers = new HashMap<>();
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -45,10 +48,10 @@ public abstract class TestRunner {
             e.printStackTrace();
         }
     }
-    
+
     private void takeScreenShot(String testname) {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File("./" + currentTime + "_" + testname + "_screenshot.png"));
         } catch (IOException e) {
@@ -59,7 +62,7 @@ public abstract class TestRunner {
 
     private void takePageSource(String testname) {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
-        String pageSource = driver.getPageSource();
+        String pageSource = getDriver().getPageSource();
         byte[] strToBytes = pageSource.getBytes();
         Path path = Paths.get("./" + currentTime + "_" + testname + "_source.html");
         try {
@@ -68,6 +71,18 @@ public abstract class TestRunner {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    protected WebDriver getDriver() {
+        WebDriver driver = drivers.get(Thread.currentThread().getId());
+        //
+        if (driver == null) {
+            driver = new ChromeDriver();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+            //driver.manage().window().maximize();
+            drivers.put(Thread.currentThread().getId(), driver);
+        }
+        return driver;
     }
 
     @BeforeSuite
@@ -79,22 +94,30 @@ public abstract class TestRunner {
 
     @BeforeClass
     public void beforeClass() {
+        /*-
         driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         driver.manage().window().maximize();
+        */
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         presentationSleep(); // For Presentation ONLY
         // driver.close();
-        driver.quit();
+        //driver.quit();
+        for (Map.Entry<Long, WebDriver> driverEntry : drivers.entrySet()) {
+            if (driverEntry.getValue() != null) {
+                driverEntry.getValue().quit();
+            }
+        }
     }
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(BASE_URL);
+        //driver.get(BASE_URL);
+        getDriver().get(BASE_URL);
         presentationSleep(); // For Presentation ONLY
     }
 
@@ -119,7 +142,7 @@ public abstract class TestRunner {
     }
 
     protected HomePage loadApplication() {
-        return new HomePage(driver);
+        //return new HomePage(driver);
+        return new HomePage(getDriver());
     }
-
 }
