@@ -31,7 +31,7 @@ public abstract class TestRunner {
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
-    private WebDriver driver;
+    public WebDriver driver;
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -72,7 +72,6 @@ public abstract class TestRunner {
 
     @BeforeSuite
     public void beforeSuite() {
-        // System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
         // WebDriverManager.firefoxdriver().setup();
     }
@@ -88,7 +87,6 @@ public abstract class TestRunner {
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         presentationSleep(); // For Presentation ONLY
-        // driver.close();
         driver.quit();
     }
 
@@ -109,12 +107,9 @@ public abstract class TestRunner {
             // clear cache; delete cookie; delete session;
             takeScreenShot(testName);
             takePageSource(testName);
-            // driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
-            // session;
+
         }
-        //driver.findElement(By.cssSelector("#logo .img-responsive")).click();
-        //driver.findElement(By.cssSelector("#logo > a")).click();
-        //driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();
+
         presentationSleep(); // For Presentation ONLY
     }
 

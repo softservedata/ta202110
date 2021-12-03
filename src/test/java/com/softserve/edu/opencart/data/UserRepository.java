@@ -58,15 +58,32 @@ public final class UserRepository {
                 .setAddress2("address2")
                 .build();
     }
+
+    public IUser getInvalidUser() {
+        return User.get()
+                .setFirstname("first")
+                .setLastname("last")
+                .setEmail("qwerty@a.com")
+                .setTelephone("12345")
+                .setAddress1("address")
+                .setCity("city")
+                .setPostcode("postcode")
+                .setCountry("country")
+                .setRegion("region")
+                .setPassword("123")
+                .setSubscribe(true)
+                .setFax("fax")
+                .setCompany("company")
+                .setAddress2("address2")
+                .build();
+    }
     
     /*-
     public IUser getNewUser() {
         
     }
     
-    public IUser getInvalidUser() {
-        
-    }
+
     */
     
     /*-
