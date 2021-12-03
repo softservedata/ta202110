@@ -1,5 +1,6 @@
 package com.softserve.edu.HW8;
 
+import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.TopPart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -60,5 +61,11 @@ public class CurrencyDropdown extends TopPart {
 
     public void clickUSDollar() {
         getUSDollar().click();
+    }
+
+    public void chooseCurrency(Currencies currency) {
+        if (currency == Currencies.EURO) clickEuro();
+        if (currency == Currencies.POUND_STERLING) clickPoundSterling();
+        if (currency == Currencies.US_DOLLAR) clickUSDollar();
     }
 }
