@@ -1,10 +1,10 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.homework8;
 
 import org.openqa.selenium.WebDriver;
 
-public class AccountSidebarPart extends TopPart {
+public class AccountSidebarGuestPart extends AccountSidebarPart {
 
-    public AccountSidebarPart(WebDriver driver) {
+    public AccountSidebarGuestPart(WebDriver driver) {
         super(driver);
         initElements();
     }
