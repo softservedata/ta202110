@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.homework8;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -33,6 +33,7 @@ public abstract class TopPart {
     //
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
+    private CurrencyComponent currencyComponent;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
@@ -283,4 +284,19 @@ public abstract class TopPart {
         return new AccountLogoutPage(driver);
     }
 
+    public CurrencyComponent selectEuro()
+    {
+        currencyComponent.selectEuro();
+        return currencyComponent;
+    }
+    public CurrencyComponent selectDollar()
+    {
+        currencyComponent.selectDollar();
+        return currencyComponent;
+    }
+    public CurrencyComponent selectPound()
+    {
+        currencyComponent.selectPound();
+        return currencyComponent;
+    }
 }

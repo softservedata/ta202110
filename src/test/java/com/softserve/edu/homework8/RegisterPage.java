@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.homework8;
 
 import org.openqa.selenium.WebDriver;
 
